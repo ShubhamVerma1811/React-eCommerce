@@ -1,17 +1,15 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-.btn-blue {
-  @apply bg-blue-500 text-white font-bold py-2 px-4 rounded;
+@font-face {
+  font-family: "Karla";
+  src: url(../assets/fonts/Karla/Karla-Regular.ttf);
 }
 
-.hero {
-  @apply py-20;
+* {
+  font-family: "Karla";
 }
 
-.title {
-  @apply text-5xl text-center;
-  color: #333;
-  line-height: 1.15;
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }

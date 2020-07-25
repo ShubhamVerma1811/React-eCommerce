@@ -1,12 +1,27 @@
-import Nav from '../components/nav'
+import Head from "next/head";
+import { useState } from "react";
+import { useSelector } from "react-redux";
+import Layout from "../components/Layout";
+import NavBar from "../components/NavBar";
+import ProductCard from "../components/ProductCard";
 
 export default function IndexPage() {
+  const prodcuts = useSelector((state) => state.products);
+  const [quantity, setQuantity] = useState(0);
+
   return (
     <div>
-      <Nav />
-      <div className="hero">
-        <h1 className="title">Next.js + Tailwind CSS</h1>
-      </div>
+      <Layout>
+        <Head>
+          <title>E - Commerce</title>
+        </Head>
+
+        <div className="flex justify-evenly flex-wrap">
+          {prodcuts.map((product) => {
+            return <ProductCard key={product.id} product={product} />;
+          })}
+        </div>
+      </Layout>
     </div>
-  )
+  );
 }
