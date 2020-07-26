@@ -1,9 +1,8 @@
 import Head from "next/head";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import Layout from "../components/Layout";
-import NavBar from "../components/NavBar";
-import ProductCard from "../components/ProductCard";
+import Layout from "../layouts/Layout";
+import ProductCard from "../layouts/ProductCard";
 
 export default function IndexPage() {
   const prodcuts = useSelector((state) => state.products);

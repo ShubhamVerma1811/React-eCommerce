@@ -38,7 +38,7 @@ const NavBar = () => {
                 Account
               </a>
             </Link>
-            <Link href="/car">
+            <Link href="/cart">
               <a className=" block text-md px-4  ml-2 py-2 rounded text-blue-700 font-bold hover:text-white mt-4 hover:bg-blue-700 lg:mt-0">
                 Cart
               </a>
