@@ -50,7 +50,8 @@ const Cart = () => {
         </div>
         <div
           className="w-full mb-6 lg:mb-0 lg:w-1/3 px-4 lg:sticky"
-          style={{ top: "1.25rem" }}>
+          style={{ top: "1.25rem" }}
+        >
           <div className="flex-grow bg-white border border-grey-lighter overflow-hidden">
             <div className="px-6 mb-2">
               <p className="text-black py-4 font-bold text-2xl">Total</p>

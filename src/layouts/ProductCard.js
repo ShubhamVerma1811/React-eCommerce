@@ -1,22 +1,26 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import Ratings from "react-star-rating-component";
+import Link from 'next/link';
+import { useDispatch, useSelector } from 'react-redux';
+import Ratings from 'react-star-rating-component';
 import {
   addCartItems,
   removeCartItems,
   setCartItems,
-} from "../store/cart/cartActions";
+} from '../store/cart/cartActions';
 
 const ProductCard = ({ product }) => {
-  const [quantity, setQuantity] = useState(0);
   const dispatch = useDispatch();
+  const { quantity } = useSelector((state) => state.cart);
 
   return (
     <div className="max-w-xs bg-white shadow-lg rounded-lg overflow-hidden my-10">
       <div className="px-4 py-2">
-        <h1 className="text-gray-900 font-bold text-3xl uppercase">
-          {product.name}
-        </h1>
+        <Link
+          href="/product"
+          as={`/product/${product.name.split(' ').join('-')}`}>
+          <h1 className="text-gray-900 font-bold text-3xl uppercase">
+            {product.name}
+          </h1>
+        </Link>
         <p className="text-gray-600 text-sm mt-1">{product.description}</p>
       </div>
       <img
@@ -24,6 +28,7 @@ const ProductCard = ({ product }) => {
         src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
         alt="NIKE AIR"
       />
+
       <div className="flex items-center justify-between px-4 py-2 bg-gray-900">
         <h1 className="text-gray-200 font-bold text-xl">₹{product.price}</h1>
         {quantity === 0 ? (

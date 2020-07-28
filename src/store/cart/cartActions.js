@@ -1,6 +1,7 @@
 import { ADD_CART_ITEMS, REMOVE_CART_ITEMS, SET_CART_ITEMS } from "./cartTypes";
 
-export const setCartItems = (product, quantity) => {
+export const setCartItems = (product) => {
+  let itemQuantity = 0;
   return {
     type: SET_CART_ITEMS,
     payload: {
@@ -8,7 +9,7 @@ export const setCartItems = (product, quantity) => {
       name: product.name,
       image: product.image,
       price: product.price,
-      quantity: ++quantity,
+      quantity: ++itemQuantity,
     },
   };
 };
