@@ -1,8 +1,15 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import Ratings from "react-star-rating-component";
+import {
+  addCartItems,
+  removeCartItems,
+  setCartItems,
+} from "../store/cart/cartActions";
 
 const ProductCard = ({ product }) => {
   const [quantity, setQuantity] = useState(0);
+  const dispatch = useDispatch();
 
   return (
     <div className="max-w-xs bg-white shadow-lg rounded-lg overflow-hidden my-10">
@@ -10,10 +17,7 @@ const ProductCard = ({ product }) => {
         <h1 className="text-gray-900 font-bold text-3xl uppercase">
           {product.name}
         </h1>
-        <p className="text-gray-600 text-sm mt-1">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi quos
-          quidem sequi illum facere recusandae voluptatibus
-        </p>
+        <p className="text-gray-600 text-sm mt-1">{product.description}</p>
       </div>
       <img
         className="h-56 w-full object-cover mt-2"
@@ -24,9 +28,11 @@ const ProductCard = ({ product }) => {
         <h1 className="text-gray-200 font-bold text-xl">₹{product.price}</h1>
         {quantity === 0 ? (
           <button
-            onClick={() => setQuantity((prev) => prev + 1)}
-            className="px-3 py-1 bg-gray-200 text-sm text-gray-900 font-semibold rounded"
-          >
+            onClick={() => {
+              setQuantity((prev) => prev + 1);
+              dispatch(setCartItems(product, quantity));
+            }}
+            className="px-3 py-1 bg-gray-200 text-sm text-gray-900 font-semibold rounded">
             Add to cart
           </button>
         ) : (
@@ -34,19 +40,21 @@ const ProductCard = ({ product }) => {
             <button
               onClick={() => {
                 if (quantity >= 0) setQuantity((prev) => prev - 1);
+                dispatch(removeCartItems(product));
               }}
               className="bg-gray-200 px-3 py-1 text-sm text-gray-900 font-extrabold focus:outline-none "
-              disabled={quantity < 0}
-            >
+              disabled={quantity < 0}>
               -
             </button>
             <div className="px-3 py-1 bg-gray-200 text-sm text-green-600 font-extrabold ">
               {quantity}
             </div>
             <button
-              onClick={() => setQuantity((prev) => prev + 1)}
-              className="bg-gray-200 px-3 py-1  text-sm text-green-600 font-bold focus:outline-none "
-            >
+              onClick={() => {
+                setQuantity((prev) => prev + 1);
+                dispatch(addCartItems(product));
+              }}
+              className="bg-gray-200 px-3 py-1  text-sm text-green-600 font-bold focus:outline-none ">
               +
             </button>
           </div>
@@ -69,8 +77,7 @@ const ProductCard = ({ product }) => {
           return (
             <div
               key={product.tags.indexOf(tag)}
-              className="text-xs mr-2 my-1 uppercase tracking-wider border px-2 text-indigo-600 border-indigo-600 hover:bg-indigo-600 hover:text-indigo-100 cursor-default"
-            >
+              className="text-xs mr-2 my-1 uppercase tracking-wider border px-2 text-indigo-600 border-indigo-600 hover:bg-indigo-600 hover:text-indigo-100 cursor-default">
               {tag}
             </div>
           );

@@ -1,6 +1,6 @@
-export const getItems = (items) => {
+export const setItems = (item) => {
   return {
-    type: "GET_ITEM",
-    payload: items,
+    type: "SET_ITEMS",
+    payload: { item },
   };
 };
