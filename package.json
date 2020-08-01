@@ -16,7 +16,9 @@
     "redux": "^4.0.5"
   },
   "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^2.3.0",
+    "autoprefixer": "^9.8.6",
     "postcss-preset-env": "^6.7.0",
-    "tailwindcss": "^1.4.0"
+    "tailwindcss": "^1.6.0"
   }
 }
