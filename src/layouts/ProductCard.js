@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Ratings from 'react-star-rating-component';
 import {
@@ -8,6 +9,7 @@ import {
 } from '../store/cart/cartActions';
 
 const ProductCard = ({ product }) => {
+  const [itemQuantity, setQuantity] = useState(0);
   const dispatch = useDispatch();
   const { quantity } = useSelector((state) => state.cart);
 
@@ -31,7 +33,7 @@ const ProductCard = ({ product }) => {
 
       <div className="flex items-center justify-between px-4 py-2 bg-gray-900">
         <h1 className="text-gray-200 font-bold text-xl">₹{product.price}</h1>
-        {quantity === 0 ? (
+        {itemQuantity === 0 ? (
           <button
             onClick={() => {
               setQuantity((prev) => prev + 1);
@@ -52,7 +54,7 @@ const ProductCard = ({ product }) => {
               -
             </button>
             <div className="px-3 py-1 bg-gray-200 text-sm text-green-600 font-extrabold ">
-              {quantity}
+              {itemQuantity}
             </div>
             <button
               onClick={() => {
