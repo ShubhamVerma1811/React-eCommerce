@@ -1,12 +1,12 @@
-import Link from 'next/link';
-import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import Ratings from 'react-star-rating-component';
+import Link from "next/link";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import Ratings from "react-star-rating-component";
 import {
   addCartItems,
   removeCartItems,
   setCartItems,
-} from '../store/cart/cartActions';
+} from "../store/cart/cartActions";
 
 const ProductCard = ({ product }) => {
   const [itemQuantity, setQuantity] = useState(0);
@@ -18,7 +18,8 @@ const ProductCard = ({ product }) => {
       <div className="px-4 py-2">
         <Link
           href="/product"
-          as={`/product/${product.name.split(' ').join('-')}`}>
+          as={`/product/${product.name.split(" ").join("-")}`}
+        >
           <h1 className="text-gray-900 font-bold text-3xl uppercase">
             {product.name}
           </h1>
@@ -39,18 +40,20 @@ const ProductCard = ({ product }) => {
               setQuantity((prev) => prev + 1);
               dispatch(setCartItems(product, quantity));
             }}
-            className="px-3 py-1 bg-gray-200 text-sm text-gray-900 font-semibold rounded">
+            className="px-3 py-1 bg-gray-200 text-sm text-gray-900 font-semibold rounded"
+          >
             Add to cart
           </button>
         ) : (
           <div className="flex justify-evenly">
             <button
               onClick={() => {
-                if (quantity >= 0) setQuantity((prev) => prev - 1);
+                setQuantity((prev) => prev - 1);
                 dispatch(removeCartItems(product));
               }}
               className="bg-gray-200 px-3 py-1 text-sm text-gray-900 font-extrabold focus:outline-none "
-              disabled={quantity < 0}>
+              disabled={quantity < 0}
+            >
               -
             </button>
             <div className="px-3 py-1 bg-gray-200 text-sm text-green-600 font-extrabold ">
@@ -61,7 +64,8 @@ const ProductCard = ({ product }) => {
                 setQuantity((prev) => prev + 1);
                 dispatch(addCartItems(product));
               }}
-              className="bg-gray-200 px-3 py-1  text-sm text-green-600 font-bold focus:outline-none ">
+              className="bg-gray-200 px-3 py-1  text-sm text-green-600 font-bold focus:outline-none "
+            >
               +
             </button>
           </div>
@@ -84,7 +88,8 @@ const ProductCard = ({ product }) => {
           return (
             <div
               key={product.tags.indexOf(tag)}
-              className="text-xs mr-2 my-1 uppercase tracking-wider border px-2 text-indigo-600 border-indigo-600 hover:bg-indigo-600 hover:text-indigo-100 cursor-default">
+              className="text-xs mr-2 my-1 uppercase tracking-wider border px-2 text-indigo-600 border-indigo-600 hover:bg-indigo-600 hover:text-indigo-100 cursor-default"
+            >
               {tag}
             </div>
           );
