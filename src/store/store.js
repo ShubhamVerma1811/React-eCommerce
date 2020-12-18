@@ -1,17 +1,12 @@
-import { combineReducers, createStore } from "redux";
-import { productsReducer } from "./products/reducers";
-import { updateCart } from "./cart/cartReducer";
+import { configureStore } from "@reduxjs/toolkit";
+// import { updateCart as cart } from "./cart/cartReducer";
+// import { productsReducer as products } from "./products/reducers";
+import cartReducer from "./cartSlice";
+import productsReducer from "./productCardSlice";
 
-//  Combining all Reducers
-export const rootReducer = combineReducers({
-  products: productsReducer,
-  cart: updateCart,
+export const store = configureStore({
+  reducer: {
+    cart: cartReducer,
+    products: productsReducer,
+  },
 });
-
-// exporting Combined Reducer
-export const store = createStore(
-  rootReducer,
-  typeof window !== "undefined" &&
-    window.__REDUX_DEVTOOLS_EXTENSION__ &&
-    window.__REDUX_DEVTOOLS_EXTENSION__()
-);
