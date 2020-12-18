@@ -1,7 +1,7 @@
 import Head from "next/head";
 import React from "react";
-import Cart from "../layouts/Cart";
-import Layout from "../layouts/Layout";
+import Cart from "../components/Cart/Cart";
+import Layout from "../components/Layout";
 
 const cart = () => {
   return (
