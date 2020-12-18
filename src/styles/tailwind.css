@@ -5,22 +5,3 @@
 /* purgecss end ignore */
 
 @tailwind utilities;
-
-.theme-light {
-  --text: theme(colors.blue.700);
-  --bg-color: theme(colors.white);
-}
-
-.theme-dark {
-  --text: theme(colors.gray.300);
-  --bg-color: theme(colors.gray.900);
-}
-
-body {
-  background: var(--bg-color);
-}
-
-a,
-span {
-  color: var(--text);
-}
