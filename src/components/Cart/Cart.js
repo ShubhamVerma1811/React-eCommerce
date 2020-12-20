@@ -1,3 +1,4 @@
+import { useStripe } from "@stripe/react-stripe-js";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
@@ -5,6 +6,7 @@ import { useSelector } from "react-redux";
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
 
+  const stripe = useStripe();
   const [total, setTotal] = useState(0);
   useEffect(() => {
     cart.map((item) => {
@@ -13,6 +15,21 @@ const Cart = () => {
       });
     });
   }, [cart]);
+
+  const handleCheckout = async () => {
+    const res = await fetch("/api/payout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ cart }),
+    });
+    const session = await res.json();
+
+    const result = await stripe.redirectToCheckout({
+      sessionId: session.id,
+    });
+  };
 
   return (
     <div className="container mx-auto">
@@ -31,6 +48,9 @@ const Cart = () => {
                       className=" border-b border-grey-lighter flex justify-between py-4"
                     >
                       <div className="flex items-s  tart w-4/5">
+                        <div className="w-1/5 mr-6">
+                          <img src={item.image} alt="" />
+                        </div>
                         <div className="flex-1 overflow-hidden">
                           <Link href={`/product/${item.id}`}>
                             <div className="pb-2 cursor-pointer hover:text-blue-800">
@@ -99,7 +119,10 @@ const Cart = () => {
             </div>
             <div className="mb-8">
               <div className="w-full px-6">
-                <button className="w-full mx-auto px-4 py-2 uppercase font-bold text-xs text-white bg-black lg:text-black lg:bg-white border-2 border-black border-solid hover:text-white hover:bg-black">
+                <button
+                  className="w-full mx-auto px-4 py-2 uppercase font-bold text-xs text-white bg-black lg:text-black lg:bg-white border-2 border-black border-solid hover:text-white hover:bg-black"
+                  onClick={handleCheckout}
+                >
                   Proceed To Checkout
                 </button>
               </div>
