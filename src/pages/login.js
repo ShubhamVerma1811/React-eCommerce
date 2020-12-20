@@ -1,7 +1,7 @@
 import Head from "next/head";
 import React from "react";
-import Layout from "../layouts/Layout";
-import LogIn from "../layouts/LogIn";
+import Layout from "../components/Layout";
+import LogIn from "../components/LogIn";
 
 const login = () => {
   return (

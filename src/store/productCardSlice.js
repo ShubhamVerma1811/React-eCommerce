@@ -2,22 +2,24 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = [
   {
-    name: "Item 1",
+    name: "Nike Air Presto",
     price: 34,
     id: 1,
-    description: "Mast product hai",
+    description:
+      "A light-weight, elegant product that makes you feel like you are walking on water.",
     image:
-      'https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"',
+      "https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
     ratings: 4,
     brand: "Nike",
     reviews: "5,010",
     tags: ["UX", "React", "Vue"],
   },
   {
-    name: "Item 2",
+    name: "Nike ,Out of the League",
     price: 1134,
     id: 2,
-    description: "Mast product hai",
+    description:
+      "As the name says, these pair of shoes are so costly that you can't afford it.",
     image:
       "https://images.unsplash.com/photo-1582588678413-dbf45f4823e9?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTl8fG5pa2V8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     ratings: 3,
@@ -26,45 +28,43 @@ const initialState = [
     tags: ["UX", "React", "Vue"],
   },
   {
-    name: "Item 3",
+    name: "Nike Adidas",
     price: 874,
     id: 3,
-    description: "Mast product hai",
+    description: "Brother from another mother Shoes",
     image:
-      'https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"',
+      "https://images.pexels.com/photos/1307128/pexels-photo-1307128.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
     ratings: 5,
     brand: "Nike",
     reviews: "330",
     tags: ["UX", "React", "Vue"],
   },
   {
-    name: "Item 4",
+    name: "Puma Skids",
     id: 4,
-    description: "Mast product hai",
+    description:
+      "A cheap copy of Nike Air Presos for those you still want to brag about them",
     price: 644,
     image:
-      'https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"',
+      "https://images.pexels.com/photos/2759783/pexels-photo-2759783.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
     ratings: 3,
-    brand: "Nike",
+    brand: "Puma",
     reviews: "12,470",
     tags: ["UX", "React", "Vue"],
   },
   {
-    name: "Item 5",
+    name: "Nike Flip Flops",
     price: 9511,
     id: 5,
-    description: "Mast product hai",
+    description: "Shh! We got an imposter",
     image:
-      'https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"',
+      "https://images.unsplash.com/photo-1603218167744-4b6371f208c2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     ratings: 2,
-    brand: "Nike",
+    brand: "Mahabis",
     reviews: "1,000",
     tags: ["UX", "React", "Vue"],
   },
 ];
-
-// TODO ACTION FILTER
-
 export const slice = createSlice({
   name: "product",
   initialState: initialState,
