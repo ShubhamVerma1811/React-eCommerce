@@ -11,13 +11,15 @@ const ProductCard = ({ product }) => {
           style={{ width: "300px" }}
         >
           <div className="px-4 py-2">
-            <h1 className="text-gray-900 font-bold text-3xl uppercase">
+            <h1 className="text-gray-900 font-bold text-2xl truncate uppercase">
               {product.name}
             </h1>
             <p className="text-gray-900 text-md font-medium mt-1 uppercase">
               {product.brand}
             </p>
-            <p className="text-gray-600 text-sm mt-1">{product.description}</p>
+            <p className="text-gray-600 text-sm mt-1 truncate">
+              {product.description}
+            </p>
           </div>
           <img
             className="h-56 w-full object-cover mt-2"
