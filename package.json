@@ -1,6 +1,9 @@
 {
   "name": "e-commerce",
   "version": "1.0.0",
+  "author": {
+    "name": "Shubham Verma"
+  },
   "scripts": {
     "dev": "next",
     "build": "next build",
