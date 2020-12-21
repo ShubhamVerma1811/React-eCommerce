@@ -23,9 +23,9 @@ export default async function checkout(req, res) {
       }),
 
       mode: "payment",
-      success_url: `http://localhost:3000?success=true`,
+      success_url: `http://${req.headers.host}?success=true`,
 
-      cancel_url: `http://localhost:3000/cart?cancelled=true`,
+      cancel_url: `http://${req.headers.host}/cart?cancelled=true`,
     });
 
     res.json({ id: session.id });
