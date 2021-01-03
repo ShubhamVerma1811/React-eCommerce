@@ -1,8 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { loadFromLocalStorage } from "../services/localStorage";
+
+const persistedState = loadFromLocalStorage();
+
+const initialState = persistedState ? persistedState.wishlists : [];
 
 export const wishlist = createSlice({
   name: "wishlist",
-  initialState: [],
+  initialState,
   reducers: {
     addItem: (state, action) => {
       return [

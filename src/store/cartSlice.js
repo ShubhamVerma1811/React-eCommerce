@@ -1,8 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { loadFromLocalStorage } from "../services/localStorage";
+
+const persistedState = loadFromLocalStorage();
+
+const initialState = persistedState ? persistedState.cart : [];
 
 export const slice = createSlice({
   name: "cart",
-  initialState: [],
+  initialState,
   reducers: {
     setCartItems: (state, { payload }) => {
       let itemQuantity = 0;
