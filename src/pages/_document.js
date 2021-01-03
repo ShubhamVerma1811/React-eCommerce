@@ -9,7 +9,14 @@ class MyDocument extends Document {
   render() {
     return (
       <Html>
-        <Head />
+        <Head>
+          <script
+            async
+            defer
+            data-website-id="4bde1715-11cc-4d0c-ae50-a7b3c7b5af35"
+            src="https://umami-azure.vercel.app/umami.js"
+          ></script>
+        </Head>
         <body>
           <Main />
           <NextScript />
