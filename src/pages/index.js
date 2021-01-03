@@ -5,7 +5,7 @@ import ProductCard from "../components/ProductCard/ProductCard";
 import { filters } from "../store/productCardSlice";
 
 export default function IndexPage() {
-  const prodcuts = useSelector((state) => state.products);
+  const products = useSelector((state) => state.products);
   const dispatch = useDispatch();
 
   return (
@@ -43,7 +43,7 @@ export default function IndexPage() {
         </div>
 
         <div className="flex justify-evenly flex-wrap">
-          {prodcuts.map((product) => {
+          {products.map((product) => {
             return <ProductCard key={product.id} product={product} />;
           })}
         </div>
