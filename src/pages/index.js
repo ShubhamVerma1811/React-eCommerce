@@ -1,12 +1,24 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Layout from "../components/Layout";
 import ProductCard from "../components/ProductCard/ProductCard";
+import { clearCart } from "../store/cartSlice";
 import { filters } from "../store/productCardSlice";
 
 export default function IndexPage() {
   const products = useSelector((state) => state.products);
   const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cart);
+
+  const Router = useRouter();
+  const { success } = Router.query;
+  useEffect(() => {
+    if (Router.query.success) {
+      dispatch(clearCart());
+    }
+  }, [success]);
 
   return (
     <div>
