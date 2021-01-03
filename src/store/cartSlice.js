@@ -38,8 +38,12 @@ export const slice = createSlice({
         state.splice(arrIdx, 1);
       }
     },
+
+    clearCart: (state) => {
+      return [];
+    },
   },
 });
 
-export const { setCartItems, addCartItems, removeCartItems } = slice.actions;
+export const { setCartItems, addCartItems, removeCartItems, clearCart } = slice.actions;
 export default slice.reducer;
